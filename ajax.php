@@ -143,6 +143,7 @@ if (isset($_POST['room_price'])) {
 if (isset($_POST['booking'])) {
     $response = [];
     $room_id = $_POST['room_id'];
+    $room_type = $_POST['room_type'];
     $check_in = $_POST['check_in'];
     $check_out = $_POST['check_out'];
     $total_price = $_POST['total_price'];
@@ -172,22 +173,25 @@ if (isset($_POST['booking'])) {
                 if (mysqli_query($connection, $room_stats_sql)) {
                     // Prepare booking details for the invoice
                     $bookingDetails = [
-                        'Numéro De Client' => $booking_id,
-                        'Type Du Chambre' => $room_id,
-                        'Numéro Du Chambre' => $room_id,
-                        'Date De Réservation' => $check_in,
+                        'Numero De Client' => $booking_id,
+                        'Type Du Chambre' => $room_type,
+                        'Nom de Client' => $name,
+                        'email de Client' => $email,
+                        'Numero Du Chambre' => $room_id,
+                        'Date De Reservation' => $check_in,
                         'Date De Fin' => $check_out,
                         'Montant Total' => $total_price,
-                        'Statut De Résevation' => 'Confirmed'
+                        'Statut De Resevation' => 'Confirmed'
                     ];
 
                     // Generate the electronic signature
                     $signatureText = "Client Signature";
                     $signaturePath = 'e-signiature/signature_' . $booking_id . '.png';
-                    generateSignature($signatureText, $signaturePath);
+               
 
                     // Generate the invoice with the electronic signature
                     $pinCode = '1234';
+                    generateSignature($signatureText, $signaturePath,$pinCode,$bookingDetails);
                     $invoicePath = generateInvoice($bookingDetails, $signaturePath, $pinCode);
 
                     // Commit transaction

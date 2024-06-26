@@ -8,6 +8,9 @@ include 'generate_invoice.php';
 if (isset($_POST['booking'])) {
     $response = [];
     $room_id = $_POST['room_id'];
+    $room_no = $_POST['room_no'];
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
     $check_in = $_POST['check_in'];
     $check_out = $_POST['check_out'];
     $total_price = $_POST['total_price'];
@@ -38,8 +41,10 @@ if (isset($_POST['booking'])) {
                     // Prepare booking details for the invoice
                     $bookingDetails = [
                         'Numéro De Client' => $booking_id,
-                        'Type Du Chambre' => $room_id,
                         'Numéro Du Chambre' => $room_id,
+                        'Nom De Client' => $last_name,
+                        'Prenom De Client' => $first_name,
+                        'Numero De Client' => $contact_no,
                         'Date De Réservation' => $check_in,
                         'Date De Fin' => $check_out,
                         'Montant Total' => $total_price,
@@ -47,12 +52,13 @@ if (isset($_POST['booking'])) {
                     ];
 
                     // Generate the electronic signature
-                    $signatureText = "Client Signature";
-                    $signaturePath = 'signatures/signature_' . $booking_id . '.png';
-                    generateSignature($signatureText, $signaturePath);
+                    $signatureText = "Client Booking_" . $last_name . ".png";
+                    $signaturePath = 'e-signatures/signature_' . $booking_id . '.png';
+                    // generateSignature($signatureText, $signaturePath);
 
                     // Generate the invoice with the electronic signature
                     $pinCode = '1234';
+                    generateSignature($signatureText, $signaturePath,$pinCode,$bookingDetails);
                     $invoicePath = generateInvoice($bookingDetails, $signaturePath, $pinCode);
 
                     // Commit transaction

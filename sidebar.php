@@ -6,17 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>side bar</title>
      <link href="css/font-awesome.min.css" rel="stylesheet">
-  
-
-
-
 </head>
 <body>
     
 <div class="sidebar">
     <header >
 <div  style="font-family:Georgia, 'Times New Roman', Times, serif">
-    <div class="fa fa-user-circle " style="color:white;"><a style="color: lime;"> Utilisateur :   </a><?php echo $user['name'];?></div> 
+<?php if (isset($user['name'])): ?>
+    <div class="fa fa-user-circle" style="color:white;">
+        <a style="color: lime;">Utilisateur : </a>
+        <?php echo htmlspecialchars($user['name']); ?>
+    </div>
+<?php else: ?>
+    <div class="fa fa-user-circle" style="color:white;">
+        <a style="color: lime;">Utilisateur : </a> Guest
+    </div>
+<?php endif; ?>
+
 </header>
     <ul>
     <?php 
@@ -86,12 +92,24 @@ if  (isset($_GET['help'])){ ?>
                 </a>
             </li>
 <?php }
-        ?>
-
+        if (isset($_GET['verify'])) { ?>
+            <li>
+                <a href="verify.php"><i class="fa fa-check" style="color:red;">&nbsp;</i>
+                    Verification
+                </a>
+            </li>
+        <?php } else { ?>
+            <li>
+                <a href="verify.php"><i class="fa fa-check" style="color:white;">&nbsp;</i>
+                    Verification
+                </a>
+            </li>
+        <?php } ?>
 
         
     </ul>
 </div>
 
+ <script src="js/bootstrap.min.js"></script>
 
 </body>
