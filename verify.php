@@ -47,7 +47,7 @@ if (is_dir($invoicesDirectory)) {
     <div class="row">
         <div class="col-lg-12">
             <?php if (!empty($invoiceFiles)) { ?>
-                <h3 style="color:aliceblue">Tout Les Facture Sont Crypté avec une E-Signiature Unique <br>La Seule Facon Pour Decrypté la signiature est de contaitre la clé public (code pin) </h3>
+                <h3 style="color:aliceblue">Tout Les Facture Sont Crypté avec une E-Signiature Unique <br>La Seule Facon Pour Decrypté la signiature est de contaitre la clé public (code pin : 1234) </h3>
                 <ul class="list-group">
                     <?php foreach ($invoiceFiles as $invoice) { ?>
                         <li class="list-group-item">

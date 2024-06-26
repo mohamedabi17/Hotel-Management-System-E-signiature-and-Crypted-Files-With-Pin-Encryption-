@@ -69,8 +69,10 @@ if (isset($_POST['booking'])) {
                     $response['invoice'] = $invoicePath;
 
                     // Redirect to a confirmation page
-                    header('Location: confirmation.php?invoice=' . urlencode($invoicePath));
-                    exit;
+                    // Send JSON response
+                    header('Content-Type: application/json');
+                    echo json_encode($response);
+                    exit;              
                 } else {
                     // Rollback transaction if room status update fails
                     mysqli_rollback($connection);

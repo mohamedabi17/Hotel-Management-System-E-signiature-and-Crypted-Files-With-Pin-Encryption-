@@ -135,7 +135,69 @@ function fetch_price(val) {
     });
 }
 
-$('#booking').submit(function() {
+// $('#booking').submit(function() {
+//     var room_type_id = $('#room_type').val();
+//     var room_type = $("#room_type :selected").text();
+//     var room_id = $('#room_no').val();
+//     var room_no = $("#room_no :selected").text();
+//     var check_in_date = $('#check_in_date').val();
+//     var check_out_date = $('#check_out_date').val();
+//     var first_name = $('#first_name').val();
+//     var last_name = $('#last_name').val();
+//     var contact_no = $('#contact_no').val();
+//     var email = $('#email').val();
+//     var id_card_id = $('#id_card_id').val();
+//     var id_card_no = $('#id_card_no').val();
+//     var address = $('#address').val();
+//     var total_price = document.getElementById('total_price').innerHTML;
+
+//     if (!room_no && !first_name && !contact_no && !id_card_no && !address) {
+//         $('.response').html('<div class="alert bg-danger alert-dismissable" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>S’il vous plaît remplir la cardinalité</div>');
+//     } else {
+//         $.ajax({
+//             type: 'post',
+//             url: 'ajax.php',
+//             dataType: 'JSON',
+//             data: {
+//                 room_type_id: room_type_id,
+//                 room_id: room_id,
+//                 check_in: check_in_date,
+//                 check_out: check_out_date,
+//                 total_price: total_price,
+//                 name: first_name + ' ' + last_name,
+//                 contact_no: contact_no,
+//                 email: email,
+//                 id_card_id: id_card_id,
+//                 id_card_no: id_card_no,
+//                 address: address,
+//                 booking: ''
+//             },
+//             success: function(response) {
+//                 if (response.done == true) {
+//                     // $('#getCustomerName').html(first_name + ' ' + last_name);
+//                     // $('#getRoomType').html(room_type);
+//                     // $('#getRoomNo').html(room_no);
+//                     // $('#getCheckIn').html(check_in_date);
+//                     // $('#getCheckOut').html(check_out_date);
+//                     // $('#getTotalPrice').html(total_price);
+//                     // $('#getPaymentStaus').html("Unpaid");
+//                     // $('#bookingConfirm').modal('afficher');
+//                     // document.getElementById("booking").reset();
+//                     window.location.href = 'confirmation.php?invoice=' + encodeURIComponent(response.invoice);
+
+//                 } else {
+//                     $('.response').html('<div class="alert bg-danger alert-dismissable" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>' + response.data + '</div>');
+//                 }
+//             }
+//         });
+//     }
+
+//     return false;
+// });
+
+$('#booking').submit(function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
     var room_type_id = $('#room_type').val();
     var room_type = $("#room_type :selected").text();
     var room_id = $('#room_no').val();
@@ -151,7 +213,7 @@ $('#booking').submit(function() {
     var address = $('#address').val();
     var total_price = document.getElementById('total_price').innerHTML;
 
-    if (!room_no && !first_name && !contact_no && !id_card_no && !address) {
+    if (!room_no || !first_name || !contact_no || !id_card_no || !address) {
         $('.response').html('<div class="alert bg-danger alert-dismissable" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>S’il vous plaît remplir la cardinalité</div>');
     } else {
         $.ajax({
@@ -174,24 +236,21 @@ $('#booking').submit(function() {
             },
             success: function(response) {
                 if (response.done == true) {
-                    $('#getCustomerName').html(first_name + ' ' + last_name);
-                    $('#getRoomType').html(room_type);
-                    $('#getRoomNo').html(room_no);
-                    $('#getCheckIn').html(check_in_date);
-                    $('#getCheckOut').html(check_out_date);
-                    $('#getTotalPrice').html(total_price);
-                    $('#getPaymentStaus').html("Unpaid");
-                    $('#bookingConfirm').modal('afficher');
-                    document.getElementById("booking").reset();
+                    // Redirect to the confirmation page with the invoice
+                    window.location.href = 'confirmation.php?invoice=' + encodeURIComponent(response.invoice);
                 } else {
                     $('.response').html('<div class="alert bg-danger alert-dismissable" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>' + response.data + '</div>');
                 }
+            },
+            error: function(xhr, status, error) {
+                $('.response').html('<div class="alert bg-danger alert-dismissable" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>Une erreur est survenue : ' + error + '</div>');
             }
         });
     }
 
     return false;
 });
+
 
 $(document).on('click', '#cutomerDetails', function(e) {
     e.preventDefault();

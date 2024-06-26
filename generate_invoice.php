@@ -36,12 +36,18 @@ function generateInvoice($bookingDetails, $signaturePath, $pinCode) {
     // Add electronic signature section header
     $pdf->Ln(20);
     $pdf->SetFont('Arial', 'B', 16);
-    $pdf->Cell(0, 10, 'Electronic Signature:', 0, 1, 'L');
+    
+    // Calculate the X position for the text to be 60 units from the right
+    $signatureX = $pdf->GetPageWidth() - 60;
+    $textWidth = $pdf->GetStringWidth('Electronic Signature:');
+    $textX = $signatureX - $textWidth;
+    
+    $pdf->SetX($textX);
+    $pdf->Cell(0, 10, 'Electronic Signature:', 0, 1, 'R');
 
-    // Add electronic signature on the right
-    $signatureX = $pdf->GetPageWidth() - 60; // Adjust the X position for the right side
+    // Add electronic signature image below the text
     $pdf->SetY($pdf->GetY() + 10); // Adjust the Y position to below the text
-    $pdf->Image($signaturePath, $signatureX, $pdf->GetY(), 50);
+    $pdf->Image($signaturePath, $signatureX - 50, $pdf->GetY(), 50);
 
     // Save the PDF to a file
     $filePath = 'invoices/invoice_' . $bookingDetails['Numero De Client'] . '.pdf';
