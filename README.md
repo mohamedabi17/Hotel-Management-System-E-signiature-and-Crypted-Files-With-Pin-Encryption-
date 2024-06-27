@@ -65,6 +65,10 @@ Additional Notes:
 ##This example uses MD5 for hashing, which is considered less secure than newer algorithms like SHA-256. Consider updating the hashing function if desired.
 The code might require adjustments depending on your specific database structure and form submission process.
 Error handling and logging are essential for robust functionality.
+
+## The Private Key Or THe E-Signiature Are Defferent Rather That they Look The Same , Just Look deeper in this Signiature Comparision
+<img width="917" alt="Screenshot 2024-06-26 042407" src="https://github.com/mohamedabi17/Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-/assets/89711322/597bdc6a-388d-4ce5-9f40-4217469cd435">
+
 Conclusion:
 
 ##This solution demonstrates a basic implementation of invoice generation with electronic signatures and user-provided PIN code encryption. Enhance security by following the additional recommendations and tailoring the script to your specific application requirements.
