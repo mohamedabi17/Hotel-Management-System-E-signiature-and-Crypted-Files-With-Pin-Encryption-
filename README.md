@@ -78,3 +78,23 @@ share
 
 
 more_vert
+
+# Invoice Generation with Electronic Signatures and Encryption
+
+This project demonstrates how to generate invoices in PHP, incorporate electronic signatures for enhanced security, and encrypt the resulting PDFs using a user-provided PIN code.
+
+## Dependencies
+
+* PHP (tested with version 7.4 or later)
+* Composer for package management
+* FPDI library (https://github.com/Setasign/FPDF/blob/master/fpdf.php) for PDF manipulation
+* FPDI Protection library (https://github.com/madnh/FPDI-Protection) for PDF encryption
+
+## Installation
+
+1. Install Composer: https://getcomposer.org/
+2. Open a terminal in your project directory and run:
+
+```bash
+composer require setasign/fpdi setasign/fpdi-protection
+
