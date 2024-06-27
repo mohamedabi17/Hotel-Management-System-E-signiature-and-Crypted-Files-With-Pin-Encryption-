@@ -12,14 +12,25 @@ This project demonstrates how to generate invoices in PHP, incorporate electroni
 * FPDI library (https://github.com/Setasign/FPDF/blob/master/fpdf.php) for PDF manipulation
 * FPDI Protection library (https://github.com/madnh/FPDI-Protection) for PDF encryption
 
-## Installation
+## Installation :Download The Source Code from this Link then Put it inside this directory of your PC C:\xampp\htdocs
 
-1. Install Composer: https://getcomposer.org/
+D
+1. Make Sur You Have Php (+7.4 version) Installed then Install Composer: https://getcomposer.org/
 2. Open a terminal in your project directory and run:
+
 
 ```bash
 composer require setasign/fpdi setasign/fpdi-protection
 ```
+```bash
+if You got an Erreur Go to the php.ini php.production.ini php.developement.ini remove the ; before extension=gd if it exists then repeat the previous commands
+```
+
+3. Go to : http://localhost/system/System
+
+<img width="560" alt="Screenshot 2024-06-27 141620" src="https://github.com/mohamedabi17/Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-/assets/89711322/af673474-8bd5-44cf-b9ba-443f1478559b">
+```
+
 ## Script Breakdown:
 
 db.php (not provided): This file likely contains the database connection details and functions for interacting with your database.
