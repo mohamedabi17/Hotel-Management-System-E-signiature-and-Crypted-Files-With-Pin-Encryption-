@@ -84,16 +84,16 @@ Error handling and logging are essential for robust functionality.
 ##The function generateSignature creates an electronic signature by dynamically generating an image of the signature text with randomized font size, angle, and position based on a hash of booking details and a PIN code. Here's a breakdown of what this function does:
 
 1-Image Creation: It creates a blank image with a specified width and height.
-Color Allocation: It sets up white and black colors for the background and text.
-2-Background Fill: It fills the image background with white.
-Font Path: It specifies the path to a TTF font file to render the text.
-3-Hashing and Randomization:
-It combines the booking details and the PIN code into a single string.
-It hashes this string using MD5 to ensure a unique and consistent output for the same input.
-It uses parts of the hashed string to randomize the font size, angle, and position of the text within the image.
-4-Text Rendering: It renders the signature text onto the image using the TrueType font.
-5-Image Saving: It saves the generated image to the specified file path.
-6-Memory Cleanup: It frees up memory used by the image resource.
+2-Color Allocation: It sets up white and black colors for the background and text.
+3-Background Fill: It fills the image background with white.
+4-Font Path: It specifies the path to a TTF font file to render the text.
+5-Hashing and Randomization:
+-It combines the booking details and the PIN code into a single string.
+-It hashes this string using MD5 to ensure a unique and consistent output for the same input.
+-It uses parts of the hashed string to randomize the font size, angle, and position of the text within the image.
+6-Text Rendering: It renders the signature text onto the image using the TrueType font.
+7-Image Saving: It saves the generated image to the specified file path.
+8-Memory Cleanup: It frees up memory used by the image resource.
 
 
 ##Type of Electronic Signature
@@ -107,6 +107,7 @@ Non-Cryptographic: While it uses hashing to influence the visual representation,
 Visual Verification: Can be used for visual verification purposes where the uniqueness of the signature image adds a layer of security.
 Document Decoration: Suitable for adding a signature look to documents where formal cryptographic signatures are not required.
 Example Usage in a Booking System
+
 This type of electronic signature can be used in a booking system to visually represent the approval or confirmation of a booking. While it adds a layer of personalization and some security through the randomized appearance, it is not a replacement for more secure digital signatures that use public key infrastructure (PKI) for cryptographic signing and verification.
 
 
@@ -114,7 +115,7 @@ This type of electronic signature can be used in a booking system to visually re
 
 
 
-Conclusion:
+#Conclusion:
 
 ##This solution demonstrates a basic implementation of invoice generation with electronic signatures and user-provided PIN code encryption. Enhance security by following the additional recommendations and tailoring the script to your specific application requirements.
 
