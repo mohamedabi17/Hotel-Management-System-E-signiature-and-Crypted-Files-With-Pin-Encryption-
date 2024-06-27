@@ -140,10 +140,14 @@ if (isset($_POST['room_price'])) {
 }
 
 
+
 if (isset($_POST['booking'])) {
-    $response = [];
+
+
+
+
     $room_id = $_POST['room_id'];
-    $room_type = $_POST['room_type'];
+    $room_type = $_POST['room_type_id'];
     $check_in = $_POST['check_in'];
     $check_out = $_POST['check_out'];
     $total_price = $_POST['total_price'];
@@ -173,8 +177,8 @@ if (isset($_POST['booking'])) {
                 if (mysqli_query($connection, $room_stats_sql)) {
                     // Prepare booking details for the invoice
                     $bookingDetails = [
-                        'Numero De Client' => $booking_id,
-                        'Type Du Chambre' => $room_type,
+                        'Numero De Client' => $customer_id,
+                        'Numero De Reservation' => $booking_id,
                         'Nom de Client' => $name,
                         'email de Client' => $email,
                         'Numero Du Chambre' => $room_id,
@@ -187,11 +191,10 @@ if (isset($_POST['booking'])) {
                     // Generate the electronic signature
                     $signatureText = "Client Signature";
                     $signaturePath = 'e-signiature/signature_' . $booking_id . '.png';
-               
 
                     // Generate the invoice with the electronic signature
                     $pinCode = '1234';
-                    generateSignature($signatureText, $signaturePath,$pinCode,$bookingDetails);
+                    generateSignature($signatureText, $signaturePath, $pinCode, $bookingDetails);
                     $invoicePath = generateInvoice($bookingDetails, $signaturePath, $pinCode);
 
                     // Commit transaction
@@ -200,38 +203,46 @@ if (isset($_POST['booking'])) {
                     $response['done'] = true;
                     $response['data'] = 'Réservation Accompli !';
                     $response['invoice'] = $invoicePath;
-
-                    // Redirect to a confirmation page
-                    header('Location: confirmation.php?invoice=' . urlencode($invoicePath));
+                    echo json_encode($response);
                     exit;
                 } else {
                     // Rollback transaction if room status update fails
                     mysqli_rollback($connection);
                     $response['done'] = false;
                     $response['data'] = "Erreur Dans La Base des Données ";
+                    echo json_encode($response);
+                    exit;
                 }
             } else {
                 // Rollback transaction if booking saving fails
                 mysqli_rollback($connection);
                 $response['done'] = false;
                 $response['data'] = "Erreur De Réservation Dans La Base des Données";
+                echo json_encode($response);
+                exit;
             }
         } else {
             // Rollback transaction if customer saving fails
             mysqli_rollback($connection);
             $response['done'] = false;
             $response['data'] = "Erreur D'ajouter Un Client Dans La Base des Données";
+            echo json_encode($response);
+            exit;
         }
     } catch (Exception $e) {
         // Rollback transaction in case of error
         mysqli_rollback($connection);
         $response['done'] = false;
         $response['data'] = "Erreur De Réservation Dans La Base des Données";
+        echo json_encode($response);
+        exit;
     }
 
-    // Return response as JSON
     echo json_encode($response);
 }
+
+
+
 
 if (isset($_POST['cutomerDetails'])) {
     //$customer_result='';

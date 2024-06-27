@@ -234,7 +234,9 @@ $('#booking').submit(function(event) {
                 address: address,
                 booking: ''
             },
+            
             success: function(response) {
+
                 if (response.done == true) {
                     // Redirect to the confirmation page with the invoice
                     window.location.href = 'confirmation.php?invoice=' + encodeURIComponent(response.invoice);

@@ -8,9 +8,7 @@ include 'generate_invoice.php';
 if (isset($_POST['booking'])) {
     $response = [];
     $room_id = $_POST['room_id'];
-    $room_no = $_POST['room_no'];
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
+    $room_type = $_POST['room_type'];
     $check_in = $_POST['check_in'];
     $check_out = $_POST['check_out'];
     $total_price = $_POST['total_price'];
@@ -40,21 +38,21 @@ if (isset($_POST['booking'])) {
                 if (mysqli_query($connection, $room_stats_sql)) {
                     // Prepare booking details for the invoice
                     $bookingDetails = [
-                        'Numéro De Client' => $booking_id,
-                        'Numéro Du Chambre' => $room_id,
-                        'Nom De Client' => $last_name,
-                        'Prenom De Client' => $first_name,
-                        'Numero De Client' => $contact_no,
-                        'Date De Réservation' => $check_in,
+                        'Numero De Client' => $customer_id,
+                        'Numero De Reservation' => $booking_id,
+                        'Nom de Client' => $name,
+                        'email de Client' => $email,
+                        'Numero Du Chambre' => $room_id,
+                        'Date De Reservation' => $check_in,
                         'Date De Fin' => $check_out,
                         'Montant Total' => $total_price,
-                        'Statut De Résevation' => 'Confirmed'
+                        'Statut De Resevation' => 'Confirmed'
                     ];
 
                     // Generate the electronic signature
-                    $signatureText = "Client Booking_" . $last_name . ".png";
-                    $signaturePath = 'e-signatures/signature_' . $booking_id . '.png';
-                    // generateSignature($signatureText, $signaturePath);
+                    $signatureText = "Client Signature";
+                    $signaturePath = 'e-signiature/signature_' . $booking_id . '.png';
+               
 
                     // Generate the invoice with the electronic signature
                     $pinCode = '1234';
@@ -69,36 +67,48 @@ if (isset($_POST['booking'])) {
                     $response['invoice'] = $invoicePath;
 
                     // Redirect to a confirmation page
-                    // Send JSON response
-                    header('Content-Type: application/json');
+                    header('Location: confirmation.php?invoice=' . urlencode($invoicePath));
+                        
                     echo json_encode($response);
-                    exit;              
+
+                    exit;
                 } else {
                     // Rollback transaction if room status update fails
                     mysqli_rollback($connection);
                     $response['done'] = false;
                     $response['data'] = "Erreur Dans La Base des Données ";
+                    echo json_encode($response);
+                    exit;
+
                 }
             } else {
                 // Rollback transaction if booking saving fails
                 mysqli_rollback($connection);
                 $response['done'] = false;
                 $response['data'] = "Erreur De Réservation Dans La Base des Données";
+                echo json_encode($response);
+                exit;
+
             }
         } else {
             // Rollback transaction if customer saving fails
             mysqli_rollback($connection);
             $response['done'] = false;
             $response['data'] = "Erreur D'ajouter Un Client Dans La Base des Données";
+             echo json_encode($response);
+                exit;
         }
     } catch (Exception $e) {
         // Rollback transaction in case of error
         mysqli_rollback($connection);
         $response['done'] = false;
         $response['data'] = "Erreur De Réservation Dans La Base des Données";
+        echo json_encode($response);
+        exit;
     }
 
     // Return response as JSON
     echo json_encode($response);
 }
+
 ?>
