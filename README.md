@@ -1,25 +1,25 @@
 "# Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-" 
 
 
-"#Invoice Generation and Electronic Signature with Encryption
-This file explains how invoices are generated, electronic signatures are added for security, and the resulting PDFs are encrypted using a user-provided PIN code in the PHP script."
+# Invoice Generation with Electronic Signatures and Encryption
 
-Dependencies:
+This project demonstrates how to generate invoices in PHP, incorporate electronic signatures for enhanced security, and encrypt the resulting PDFs using a user-provided PIN code.
 
-PHP (tested with version 7.4 or later)
-Composer for package management
-FPDI library (https://github.com/topics/fpdi) for PDF manipulation
-FPDI Protection library ([invalid URL removed]) for PDF encryption
-Installation:
+## Dependencies
 
-Install Composer: https://getcomposer.org/
+* PHP (tested with version 7.4 or later)
+* Composer for package management
+* FPDI library (https://github.com/Setasign/FPDF/blob/master/fpdf.php) for PDF manipulation
+* FPDI Protection library (https://github.com/madnh/FPDI-Protection) for PDF encryption
 
-Open a terminal in your project directory and run:
+## Installation
 
-Bash
+1. Install Composer: https://getcomposer.org/
+2. Open a terminal in your project directory and run:
+
+```bash
 composer require setasign/fpdi setasign/fpdi-protection
-Use code with caution.
-content_copy
+
 Script Breakdown:
 
 db.php (not provided): This file likely contains the database connection details and functions for interacting with your database.
@@ -78,23 +78,4 @@ share
 
 
 more_vert
-
-# Invoice Generation with Electronic Signatures and Encryption
-
-This project demonstrates how to generate invoices in PHP, incorporate electronic signatures for enhanced security, and encrypt the resulting PDFs using a user-provided PIN code.
-
-## Dependencies
-
-* PHP (tested with version 7.4 or later)
-* Composer for package management
-* FPDI library (https://github.com/Setasign/FPDF/blob/master/fpdf.php) for PDF manipulation
-* FPDI Protection library (https://github.com/madnh/FPDI-Protection) for PDF encryption
-
-## Installation
-
-1. Install Composer: https://getcomposer.org/
-2. Open a terminal in your project directory and run:
-
-```bash
-composer require setasign/fpdi setasign/fpdi-protection
 
