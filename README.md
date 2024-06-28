@@ -1,4 +1,4 @@
-"# Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-" 
+<img width="943" alt="Screenshot 2024-06-28 031804" src="https://github.com/mohamedabi17/Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-/assets/89711322/2d33928b-dec1-4dc4-83ce-2a20d34a7b85"><img width="958" alt="Screenshot 2024-06-28 023535" src="https://github.com/mohamedabi17/Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-/assets/89711322/318b3b72-3b98-45c6-822b-205bbec28f3a">"# Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-" 
 
 
 # Invoice Generation with Electronic Signatures and Encryption
@@ -108,9 +108,14 @@ Visual Verification: Can be used for visual verification purposes where the uniq
 Document Decoration: Suitable for adding a signature look to documents where formal cryptographic signatures are not required.
 Example Usage in a Booking System
 
-This type of electronic signature can be used in a booking system to visually represent the approval or confirmation of a booking. While it adds a layer of personalization and some security through the randomized appearance, it is not a replacement for more secure digital signatures that use public key infrastructure (PKI) for cryptographic signing and verification.
+he randomized appearance, it is not a replacement for more secure digital signatures that use public key infrastructure (PKI) for cryptographic signing and verification.
 
-
+<img width="948" alt="Screenshot 2024-06-28 031718" src="https://github.com/mohamedabi17/Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-/assets/89711322/df9cebb1-8526-486f-8076-2f0b68acf1a8"><img width="956" alt="Screenshot 2024-06-28 031321" src="https://github.com/mohamedabi17/Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-/assets/89711322/3ac1655b-e35e-49ab-8bcc-09e23a009328">
+<img width="944" alt="Screenshot 2024-06-28 031432" src="https://github.com/mohamedabi17/Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-/assets/89711322/2260cac4-b130-4240-b123-3b9de7a7846e">
+<img width="952" alt="Screenshot 2024-06-28 031501" src="https://github.com/mohamedabi17/Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-/assets/89711322/5155eb5f-ab9d-4911-bada-0a3fa33a7527">
+<img width="952" alt="Screenshot 2024-06-28 031544" src="https://github.com/mohamedabi17/Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-/assets/89711322/03039e6f-06e3-4a00-816a-be5d1c4ac0ac">
+<img width="943" alt="Screenshot 2024-06-28 031624" src="https://github.com/mohamedabi17/Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-/assets/89711322/823b192f-e747-4c04-b74c-bc4dec84a321">
+and some security through t<img width="955" alt="Screenshot 2024-06-28 032959" src="https://github.com/mohamedabi17/Hotel-Management-System-E-signiature-and-Crypted-Files-With-Pin-Encryption-/assets/89711322/afbec811-f209-4da7-a1c8-6cbaa70ae63c">
 
 
 
